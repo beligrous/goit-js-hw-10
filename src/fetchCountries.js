@@ -18,8 +18,11 @@ export function fetchCountries(country) {
           'Too many matches found. Please enter a more specific name.'
         );
       }
-      if (data.length > 2 || data.length < 10) {
-        render();
+      if (data.length >= 2 || data.length < 10) {
+        renderList();
+      }
+      if (data.length === 1) {
+        renderInfo();
       }
     });
 }
@@ -30,8 +33,20 @@ function template({ name, flags }) {
   </li>`;
 }
 
-function render() {
+function templateCountryInfo({ capital, population, languages }) {
+  return `<p>Capital:${capital}</p>
+  <p>Population:${population}</p>
+  <p>Langueges:${Object.values(languages)}</p>`;
+}
+
+function renderList() {
   const list = items.map(template);
   refs.countryList.innerHTML = '';
   refs.countryList.insertAdjacentHTML('beforeend', list.join(''));
+}
+
+function renderInfo() {
+  const info = items.map(templateCountryInfo);
+  refs.countryInfo.innerHTML = '';
+  refs.countryInfo.insertAdjacentHTML('beforeend', info.join(''));
 }
