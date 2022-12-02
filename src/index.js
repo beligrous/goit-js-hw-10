@@ -1,6 +1,6 @@
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
-// import 'lodash.debounce';
+var _ = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 
@@ -13,7 +13,7 @@ export const refs = {
 refs.input.addEventListener('input', onInput);
 
 function onInput(e) {
-  let country = e.currentTarget.value;
+  let country = e.currentTarget.value.trim();
 
-  fetchCountries(country);
+  _.debounce(fetchCountries(country), DEBOUNCE_DELAY);
 }

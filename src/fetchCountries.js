@@ -39,9 +39,9 @@ function template({ name, flags }) {
 }
 
 function templateCountryInfo({ capital, population, languages }) {
-  return `<p>Capital:${capital}</p>
-  <p>Population:${population}</p>
-  <p>Langueges:${Object.values(languages)}</p>`;
+  return `<p>Capital: ${capital}</p>
+  <p>Population: ${population}</p>
+  <p>Languages: ${Object.values(languages)}</p>`;
 }
 
 function renderList() {
