@@ -1,7 +1,17 @@
-export const fetchCountries = country => {
-  fetch(
-    `https://restcountries.com/v3.1/name/${country}?fields=name.official,capital,population,flags.svg,languages`
-  )
-    .then(r => r.json)
-    .then(data => console.log(data.name));
-};
+export function fetchCountries(country) {
+  fetch(`${URL}${country}?fields=name,capital,population,flags,languages`)
+    .then(r => r.json())
+    .then(data => {
+      items = data;
+      console.log(items);
+      render();
+      //   if (data.length > 10) {
+      //     return Notiflix.Notify.info(
+      //       'Too many matches found. Please enter a more specific name.'
+      //     );
+      //   }
+      //   if (data.length > 2 || data.length < 10) {
+      //     render();
+      //   }
+    });
+}
