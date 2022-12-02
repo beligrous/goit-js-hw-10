@@ -1,4 +1,7 @@
+import Notiflix from 'notiflix';
+Notiflix.Notify.init({});
 import { refs } from './index';
+
 const URL = 'https://restcountries.com/v3.1/name/';
 let items = [];
 
@@ -10,22 +13,19 @@ export function fetchCountries(country) {
     .then(data => {
       items = data;
       console.log(items);
-      render();
-      //   if (data.length > 10) {
-      //     return Notiflix.Notify.info(
-      //       'Too many matches found. Please enter a more specific name.'
-      //     );
-      //   }
-      //   if (data.length > 2 || data.length < 10) {
-      //     render();
-      //   }
+      if (data.length > 10) {
+        return Notiflix.Notify.info(
+          'Too many matches found. Please enter a more specific name.'
+        );
+      }
+      if (data.length > 2 || data.length < 10) {
+        render();
+      }
     });
 }
 
-function template(name, flags) {
-  return `<li><svg>
-  <use href=${flags.svg}></use>
-</svg>
+function template({ name, flags }) {
+  return `<li><img src=${flags.svg} alt = "flag" width = "100">
   <span>${name.official}</span>
   </li>`;
 }
