@@ -1,3 +1,4 @@
+import { refs } from './index';
 const URL = 'https://restcountries.com/v3.1/name/';
 let items = [];
 

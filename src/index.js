@@ -6,7 +6,7 @@ Notiflix.Notify.init({});
 
 const DEBOUNCE_DELAY = 300;
 
-const refs = {
+export const refs = {
   input: document.querySelector('#search-box'),
   countryList: document.querySelector('.country-list'),
   countryInfo: document.querySelector('.country-info'),
@@ -17,5 +17,5 @@ refs.input.addEventListener('input', onInput);
 function onInput(e) {
   let country = e.currentTarget.value;
 
-  fetchCountries();
+  fetchCountries(country);
 }
