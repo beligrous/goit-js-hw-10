@@ -12,7 +12,9 @@ export function fetchCountries(country) {
     .then(r => r.json())
     .then(data => {
       items = data;
-      console.log(items);
+      if (items.status === 404) {
+        throw error;
+      }
       if (data.length > 10) {
         return Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
@@ -24,6 +26,9 @@ export function fetchCountries(country) {
       if (data.length === 1) {
         renderInfo();
       }
+    })
+    .catch(error => {
+      Notiflix.Notify.failure('Oops, there is no country with that name');
     });
 }
 
