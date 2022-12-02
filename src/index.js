@@ -1,5 +1,6 @@
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
+import Debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -15,3 +16,4 @@ function onInput(e) {
   let country = e.currentTarget.value;
   fetchCountries(country);
 }
+
