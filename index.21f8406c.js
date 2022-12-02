@@ -1,2 +1,0 @@
-const e=e=>{fetch(`https://restcountries.com/v3.1/name/${e}?fields=name.official,capital,population,flags.svg,languages`).then((e=>e.json)).then((e=>console.log(e.name)))};({input:document.querySelector("#search-box"),countryList:document.querySelector(".country-list"),countryInfo:document.querySelector(".country-info")}).input.addEventListener("input",(function(t){let n=t.currentTarget.value;e(n)}));
-//# sourceMappingURL=index.21f8406c.js.map
