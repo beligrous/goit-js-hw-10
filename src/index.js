@@ -1,6 +1,6 @@
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
-var _ = require('lodash.debounce');
+import debounce from 'lodash.debounce';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -10,10 +10,14 @@ export const refs = {
   countryInfo: document.querySelector('.country-info'),
 };
 
-refs.input.addEventListener('input', onInput);
+refs.input.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(e) {
-  let country = e.currentTarget.value.trim();
-
-  _.debounce(fetchCountries(country), DEBOUNCE_DELAY);
+  let country = e.target.value.trim();
+  if (country === '') {
+    refs.countryList.innerHTML = '';
+    refs.countryInfo.innerHTML = '';
+    return;
+  }
+  fetchCountries(country);
 }
