@@ -34,7 +34,7 @@ export function fetchCountries(country) {
 
 function template({ name, flags }) {
   return `<li><img src=${flags.svg} alt = "flag" width = "100">
-  <span>${name.official}</span>
+  <span class="country_name" >${name.official}</span>
   </li>`;
 }
 
